@@ -1,9 +1,9 @@
 #!/bin/bash 
 
 echo "Welcome to Coinflip simulator"
-read -p "Enter number of times you want to simulate the coin flip: " n
-echo "Simulating for $n times:"
-for (( i=1; i<=$n; i++ ))
+echo "Simulating 21 times"
+echo "Checking whether Heads or Tails wins"
+for (( i=1; i<=21; i++ ))
 do
 x=$((RANDOM%2))
 if [ $x -eq 1 ]; then
@@ -14,5 +14,13 @@ else
 	((count2++))
 fi
 done
-echo "Heads count: $count1"
-echo "Tails count: $count2"
+printf "\n"
+printf "Heads:$count1\nTails:$count2\n"
+if [ $count1 -gt $count2 ]; then
+	echo "Heads is the Winner and won by:" $(($count1-$count2)) "margin"
+elif [ $count1 -lt $count2  ]; then
+	echo "Tails is the Winner and won by:" $(($count2-$count1)) "margin"
+else
+	echo "Its a Tie"
+fi
+
