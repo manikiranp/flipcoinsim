@@ -1,9 +1,9 @@
 #!/bin/bash 
 
 echo "Welcome to Coinflip simulator"
-echo "Simulating 21 times"
+echo "Simulating 22 times"
 echo "Checking whether Heads or Tails wins"
-for (( i=1; i<=21; i++ ))
+for (( i=1; i<=22; i++ ))
 do
 x=$((RANDOM%2))
 if [ $x -eq 1 ]; then
