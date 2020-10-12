@@ -1,26 +1,37 @@
 #!/bin/bash 
 
 echo "Welcome to Coinflip simulator"
-echo "Simulating 21 times"
+echo "Simulating 22 times"
 echo "Checking whether Heads or Tails wins"
-for (( i=1; i<=21; i++ ))
+function flip() {
+count1=0
+count2=0
+diff1=$(($count1-$count2));      diff2=$(($count2-$count1))
+for (( i=1; i<=$1; i++ ))
 do
-x=$((RANDOM%2))
-if [ $x -eq 1 ]; then
-	echo "Heads is the Winner!"
+	x=$((RANDOM%2))
+	if [ $x -eq 1 ]; then
+		echo "Heads is the Winner!"
 	((count1++))
-else
-	echo "Tails is the Winner!"
+	else
+		echo "Tails is the Winner!"
 	((count2++))
-fi
+	fi
 done
 printf "\n"
 printf "Heads:$count1\nTails:$count2\n"
-if [ $count1 -gt $count2 ]; then
-	echo "Heads is the Winner and won by:" $(($count1-$count2)) "margin"
-elif [ $count1 -lt $count2  ]; then
-	echo "Tails is the Winner and won by:" $(($count2-$count1)) "margin"
-else
-	echo "Its a Tie"
-fi
+}
 
+function winner() {
+	flip "22"
+	if [ $count1 -gt $count2 ]; then
+		echo "Heads is the Winner and won by:" $(($count1-$count2)) "margin"
+	elif [ $count1 -lt $count2  ]; then
+		echo "Tails is the Winner and won by:" $(($count2-$count1)) "margin"
+	else
+		printf "Its a Tie\nSimulating the program again\n"
+		winner
+	fi
+}
+
+winner
