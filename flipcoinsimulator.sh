@@ -3,10 +3,8 @@
 echo "Welcome to Coinflip simulator"
 echo "Simulating 22 times"
 echo "Checking whether Heads or Tails wins"
-function flip() {
-count1=0
-count2=0
-diff1=$(($count1-$count2));      diff2=$(($count2-$count1))
+function flip () {
+count1=0; count2=0;
 for (( i=1; i<=$1; i++ ))
 do
 	x=$((RANDOM%2))
